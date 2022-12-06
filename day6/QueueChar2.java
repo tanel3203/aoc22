@@ -1,3 +1,4 @@
+// identical copy of QueueChar.java, except value 4 changed to 14
 import java.io.FileReader;
 import java.util.Queue;
 import java.util.LinkedList;
