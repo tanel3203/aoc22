@@ -1,3 +1,4 @@
+//same as SortedMapImpl.java just cleaned up
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.NavigableMap;
@@ -25,5 +26,4 @@ class NavigableMapImpl {
             e.printStackTrace();
         }
     }
-
 }
