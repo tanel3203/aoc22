@@ -19,23 +19,19 @@ class TreesImpl {
                 String[] tokens = line.split(" ");
                 if (tokens[0].equals("$")) {
                     if (tokens[1].equals("cd")) {
-                        if (tokens[2].equals("..")) {
-                            currentPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
-                        } else if (tokens[2].equals("/")) {
-                            currentPath = "./root";
-                        } else {
+                        if (tokens[2].equals("..")) currentPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
+                        else if (tokens[2].equals("/")) currentPath = "./root";
+                        else {
                             currentPath = currentPath + "/" + tokens[2];
                             map.put(currentPath, 0);
                         }
                     };
-                } else {
-                    if (!tokens[0].equals("dir")) {
-                        String parent = currentPath;
-                        int traversals = currentPath.replaceAll("[^/]", "").length();
-                        for (int i = 0; i < traversals; i++) {
-                            map.put(parent, map.get(parent) + Integer.parseInt(tokens[0]));
-                            parent = parent.substring(0, parent.lastIndexOf("/"));
-                        }
+                } else if (!tokens[0].equals("dir")) {
+                    String parent = currentPath;
+                    int traversals = currentPath.replaceAll("[^/]", "").length();
+                    for (int i = 0; i < traversals; i++) {
+                        map.put(parent, map.get(parent) + Integer.parseInt(tokens[0]));
+                        parent = parent.substring(0, parent.lastIndexOf("/"));
                     }
                 }
             }
