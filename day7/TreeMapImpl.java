@@ -29,15 +29,10 @@ class TreeMapImpl {
                     };
                 } else {
                     if (!tokens[0].equals("dir")) {
-                        int total = map.get(currentPath);
-                        total = total + Integer.parseInt(tokens[0]);
-                        map.put(currentPath, total);
-                        String parent = currentPath.substring(0, currentPath.lastIndexOf("/"));
-                        int traversals = currentPath.replaceAll("[^/]", "").length()-1;
+                        String parent = currentPath;
+                        int traversals = currentPath.replaceAll("[^/]", "").length();
                         for (int i = 0; i < traversals; i++) {
-                            int total2 = map.get(parent);
-                            total2 = total2 + Integer.parseInt(tokens[0]);
-                            map.put(parent, total2);
+                            map.put(parent, map.get(parent) + Integer.parseInt(tokens[0]));
                             parent = parent.substring(0, parent.lastIndexOf("/"));
                         }
                     }
